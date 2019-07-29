@@ -51,6 +51,11 @@ func (c *Context) ReplyEmbed(args ...interface{}) (*discordgo.Message, error) {
 	})
 }
 
+// ReplyDetailedEmbed replies to the sender with an embed and allows customizing the embed
+func (c *Context) ReplyDetailedEmbed(embed *discordgo.MessageEmbed) (*discordgo.Message, error) {
+	return c.Ses.ChannelMessageSendEmbed(c.Msg.ChannelID, embed)
+}
+
 // Guild retrieves a guild from the state or restapi
 func (c *Context) Guild(guildID string) (*discordgo.Guild, error) {
 	g, err := c.Ses.State.Guild(guildID)
